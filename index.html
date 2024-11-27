@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Image Reveal Slider on OpenStreetMap</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 800px;
+      width: 100%;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 350px;
+      overflow: hidden;
+      margin: 0 auto;
+      /* Center the container */
+    }
+
+    .top-image,
+    .bottom-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes flash {
+
+      0%,
+      100% {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      50% {
+        background-color: rgba(255, 255, 255, 1);
+      }
+    }
+
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 5px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: ew-resize;
+      z-index: 3;
+      animation: flash 1s infinite;
+    }
+
+    .top-image {
+      clip-path: inset(0 0 0 50%);
+    }
+
+    .text-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .text-container h3 {
+      margin: 0;
+    }
+  </style>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <script>
+    async function initMap() {
+      // const response = await fetch('locations.json');
+      // const markersData = await response.json();
+      const markersData = [
+        {
+          "name": "Imperial Hotel",
+          "location": [-37.064675355387045, 144.21840025525844],
+          "nowImage": "images/imperial_hotel/now.jpg",
+          "thenImage": "images/imperial_hotel/then.jpg",
+          "header": "The Imperial Hotel",
+          "address": "56 Lyttleton St Castlemaine VIC 3450",
+          "body": "Now (2024) & Then (1861)"
+        },
+        {
+          "name": "Garfield Water Wheel",
+          "location": [-37.07212119942905, 144.25937370113587],
+          "nowImage": "images/garfield_water_wheel/now.jpg",
+          "thenImage": "images/garfield_water_wheel/then.jpg",
+          "header": "Garfield Water Wheel",
+          "address": "Leanganook Track, Chewton VIC 3451",
+          "body": "Now (2024) & Then (1900)"
+        },
+        {
+          "name": "Duggan's Motors",
+          "location": [-37.06325579715841, 144.21817182339936],
+          "nowImage": "images/duggans_motors/now.jpg",
+          "thenImage": "images/duggans_motors/then.jpg",
+          "header": "Duggan's Motors",
+          "address": "53 Templeton St, Castlemaine VIC 3450",
+          "body": "Now (2024) & Then (1912)"
+        },
+        {
+          "name": "Main Street Maldon",
+          "location": [-36.99660478084699, 144.0696303603194],
+          "nowImage": "images/main_st_maldon/now.jpg",
+          "thenImage": "images/main_st_maldon/then.jpg",
+          "header": "Main Street Maldon",
+          "address": "51 Main St, Maldon VIC 3463",
+          "body": "Now (2023) & Then (1900)"
+        },
+        {
+          "name": "Courage is Contagious",
+          "location": [-37.05610783401192, 144.2140247167971],
+          "nowImage": "images/courage_is_contagious/now.jpg",
+          "thenImage": "images/courage_is_contagious/then.jpg",
+          "header": "Courage is Contagious",
+          "address": "9 Walker St, Castlemaine VIC 3450",
+          "body": "Now (2024) & Then (2021)"
+        },
+        {
+          "name": "Bendigo Bowling",
+          "location": [-36.75639729290664, 144.28488660090224],
+          "nowImage": "images/bendigo_bowling/now.jpg",
+          "thenImage": "images/bendigo_bowling/then.jpg",
+          "header": "Bendigo Bowling",
+          "address": "159 Hargreaves St, Bendigo VIC 3550",
+          "body": "Now (2024) & Then (1966)"
+        },
+        {
+          "name": "Fitzie's Fish & Chips",
+          "location": [-33.54716954783312, 151.2266082425657],
+          "nowImage": "images/fitzies/now.jpg",
+          "thenImage": "images/fitzies/then.jpg",
+          "header": "Fitzie's Fish & Chips",
+          "address": "8 Dangar Rd, Brooklyn NSW 2083",
+          "body": "Now (2023) & Then (1956)"
+        },
+        {
+          "name": "Hawkesbury River Railway Bridge Capstone",
+          "location": [-33.53778442388845, 151.22923936296684],
+          "nowImage": "images/hawkesbury_river_bridge_capstone/now.jpg",
+          "thenImage": "images/hawkesbury_river_bridge_capstone/then.jpg",
+          "header": "Hawkesbury River Railway Bridge Capstone",
+          "address": "Hawkesbury River NSW 2083",
+          "body": "Now (2023) & Then (1889)"
+        }
+      ];
+
+      const map = L.map('map').setView([-37.064675355387045, 144.21840025525844], 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      markersData.forEach(markerData => {
+        const contentString = `
+          <div class="container" id="imageContainer">
+            <img src="${markerData.nowImage}" alt="Bottom" class="bottom-image" id="nowImage">
+            <img src="${markerData.thenImage}" alt="Top" class="top-image" id="thenImage">
+            <div class="slider" draggable="true"></div>
+          </div>
+          <div class="text-container">
+            <h3>${markerData.header}</h3>
+            <p>${markerData.body}</p>
+          </div>
+        `;
+
+        const marker = L.marker(markerData.location).addTo(map);
+        marker.bindPopup(contentString,
+          {
+            minWidth: 600,
+            closeButton: true,
+          }
+        );
+
+        // Add event listener for the slider functionality
+        marker.on('popupopen', () => {
+          const container = document.querySelector('.leaflet-popup-content .container');
+          const topImage = container.querySelector('.top-image');
+          const slider = container.querySelector('.slider');
+
+          // Flashing animation for the slider
+          slider.style.animation = 'flash 1s infinite';
+
+          // Brief animation to move the slider left and right
+          setTimeout(() => {
+            slider.style.transition = 'left 0.5s';
+            slider.style.left = '45%';
+            topImage.style.clipPath = 'inset(0 0 0 45%)';
+
+            setTimeout(() => {
+              slider.style.left = '55%';
+              topImage.style.clipPath = 'inset(0 0 0 55%)';
+
+              setTimeout(() => {
+                slider.style.left = '50%';
+                topImage.style.clipPath = 'inset(0 0 0 50%)';
+                slider.style.transition = '';
+              }, 500);
+            }, 500);
+          }, 1000);
+
+          container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const percentage = Math.max(0, Math.min(x / rect.width, 1));
+            topImage.style.clipPath = `inset(0 0 0 ${percentage * 100}%)`;
+            slider.style.left = `${percentage * 100}%`;
+            slider.style.animation = ''; // Stop flashing animation when user interacts
+          });
+        });
+      });
+    }
+
+    window.onload = initMap;
+  </script>
+</body>
+
+</html>

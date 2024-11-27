@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Imperial Hotel",
+    "location": [-37.064675355387045, 144.21840025525844],
+    "nowImage": "images/imperial_hotel/now.jpg",
+    "thenImage": "images/imperial_hotel/then.jpg",
+    "header": "The Imperial Hotel",
+    "address": "56 Lyttleton St Castlemaine VIC 3450",
+    "body": "Now (2024) & Then (1861)"
+  },
+  {
+    "name": "Garfield Water Wheel",
+    "location": [-37.07212119942905, 144.25937370113587],
+    "nowImage": "images/garfield_water_wheel/now.jpg",
+    "thenImage": "images/garfield_water_wheel/then.jpg",
+    "header": "Garfield Water Wheel",
+    "address": "Leanganook Track, Chewton VIC 3451",
+    "body": "Now (2024) & Then (1900)"
+  },
+  {
+    "name": "Duggan's Motors",
+    "location": [-37.06325579715841, 144.21817182339936],
+    "nowImage": "images/duggans_motors/now.jpg",
+    "thenImage": "images/duggans_motors/then.jpg",
+    "header": "Duggan's Motors",
+    "address": "53 Templeton St, Castlemaine VIC 3450",
+    "body": "Now (2024) & Then (1912)"
+  },
+  {
+    "name": "Main Street Maldon",
+    "location": [-36.99660478084699, 144.0696303603194],
+    "nowImage": "images/main_st_maldon/now.jpg",
+    "thenImage": "images/main_st_maldon/then.jpg",
+    "header": "Main Street Maldon",
+    "address": "51 Main St, Maldon VIC 3463",
+    "body": "Now (2023) & Then (1900)"
+  },
+  {
+    "name": "Bendigo Bowling", 
+    "location": [-36.75639729290664, 144.28488660090224],
+    "nowImage": "images/bendigo_bowling/now.jpg",
+    "thenImage": "images/bendigo_bowling/then.jpg",
+    "header": "Bendigo Bowling",
+    "address": "159 Hargreaves St, Bendigo VIC 3550",
+    "body": "Now (2024) & Then (1956)"
+  },
+  {
+    "name": "Fitzie's Fish & Chips",
+    "location": [-33.54716954783312, 151.2266082425657],
+    "nowImage": "images/fitzies/now.jpg",
+    "thenImage": "images/fitzies/then.jpg",
+    "header": "Fitzie's Fish & Chips",
+    "address": "8 Dangar Rd, Brooklyn NSW 2083",
+    "body": "Now (2023) & Then (1956)"
+  },
+  {
+    "name": "Hawkesbury River Railway Bridge Capstone", 
+    "location": [-33.53778442388845, 151.22923936296684],
+    "nowImage": "images/hawkesbury_river_bridge_capstone/now.jpg",
+    "thenImage": "images/hawkesbury_river_bridge_capstone/then.jpg",
+    "header": "Hawkesbury River Railway Bridge Capstone",
+    "address": "Hawkesbury River NSW 2083",
+    "body": "Now (2023) & Then (1889)"
+  }
+]
