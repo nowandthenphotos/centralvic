@@ -17,7 +17,6 @@
       height: 350px;
       overflow: hidden;
       margin: 0 auto;
-      /* Center the container */
     }
 
     .top-image,
@@ -26,18 +25,6 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-    }
-
-    @keyframes flash {
-
-      0%,
-      100% {
-        background-color: rgba(255, 255, 255, 0.5);
-      }
-
-      50% {
-        background-color: rgba(255, 255, 255, 1);
-      }
     }
 
     .slider {
@@ -49,7 +36,6 @@
       background-color: rgba(255, 255, 255, 0.5);
       cursor: ew-resize;
       z-index: 3;
-      animation: flash 1s infinite;
     }
 
     .top-image {
@@ -109,34 +95,12 @@
           const topImage = container.querySelector('.top-image');
           const slider = container.querySelector('.slider');
 
-          // Flashing animation for the slider
-          slider.style.animation = 'flash 1s infinite';
-
-          // Brief animation to move the slider left and right
-          setTimeout(() => {
-            slider.style.transition = 'left 0.5s';
-            slider.style.left = '45%';
-            topImage.style.clipPath = 'inset(0 0 0 45%)';
-
-            setTimeout(() => {
-              slider.style.left = '55%';
-              topImage.style.clipPath = 'inset(0 0 0 55%)';
-
-              setTimeout(() => {
-                slider.style.left = '50%';
-                topImage.style.clipPath = 'inset(0 0 0 50%)';
-                slider.style.transition = '';
-              }, 500);
-            }, 500);
-          }, 1000);
-
           container.addEventListener('mousemove', (e) => {
             const rect = container.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const percentage = Math.max(0, Math.min(x / rect.width, 1));
             topImage.style.clipPath = `inset(0 0 0 ${percentage * 100}%)`;
             slider.style.left = `${percentage * 100}%`;
-            slider.style.animation = ''; // Stop flashing animation when user interacts
           });
         });
       });
