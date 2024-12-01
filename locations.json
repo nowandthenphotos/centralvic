@@ -27,6 +27,24 @@
     "body": "Now (2024) & Then (1912)"
   },
   {
+    "name": "Newstead Courthouse",
+    "location": [-37.10768566950296, 144.06476524954624],
+    "nowImage": "images/newstead_courthouse/now.png",
+    "thenImage": "images/newstead_courthouse/then.jpg",
+    "header": "Newstead Courthouse",
+    "address": "2 Canrobert St, Newstead VIC 3462",
+    "body": "Now (2024) & Then (1863)"
+  },
+  {
+    "name": "Newstead Railway Station",
+    "location": [-37.113252702929955, 144.05611152514572],
+    "nowImage": "images/newstead_station/now.jpg",
+    "thenImage": "images/newstead_station/then.jpg",
+    "header": "Newstead Railway Station",
+    "address": "8A Tivey St, Newstead VIC 3462",
+    "body": "Now (2024) & Then (1862)"
+  },
+  {
     "name": "Main Street Maldon",
     "location": [-36.99660478084699, 144.0696303603194],
     "nowImage": "images/main_st_maldon/now.jpg",

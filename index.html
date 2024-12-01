@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Image Reveal Slider on OpenStreetMap</title>
+  <title>Now & Then Photo History – Central Victoria</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     #map {
@@ -62,7 +62,7 @@
       const response = await fetch('locations.json');
       const markersData = await response.json();
 
-      const map = L.map('map').setView([-37.064675355387045, 144.21840025525844], 13);
+      const map = L.map('map').setView([-37.064675355387045, 144.21840025525844], 12);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
