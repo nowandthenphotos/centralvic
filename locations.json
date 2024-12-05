@@ -27,6 +27,15 @@
     "body": "Now (2024) & Then (1912)"
   },
   {
+    "name": "E. D. Williams Building",
+    "location": [-37.06571932657428, 144.21961492814015],
+    "nowImage": "images/ed_williams/now.jpg",
+    "thenImage": "images/ed_williams/then.jpg",
+    "header": "E. D. Williams Building",
+    "address": "101 Mostyn St, Castlemaine VIC 3450",
+    "body": "Now (2024) & Then (1812)"
+  },
+  {
     "name": "Newstead Courthouse",
     "location": [-37.10768566950296, 144.06476524954624],
     "nowImage": "images/newstead_courthouse/now.png",
